@@ -7,9 +7,10 @@ To use this application,
 
 Functionalities:
 1. You can add url in home screen
-2. list of all urls is listed in table below
-3. enable and disable url functionality is added
-4. click on view button to get url details.
-5. if url is disabled then url details are not accessible.
-6. In detail url page user can visit short url which will increase total clicks of that url.
-7. Also user clicks are shown based on time.
+2. bar graph is plotted.
+3. list of all urls is listed in table below
+4. enable and disable url functionality is added
+5. click on view button to get url details.
+6. if url is disabled then url details are not accessible.
+7. In detail url page user can visit short url which will increase total clicks of that url.
+8. Also user clicks are shown based on time.
