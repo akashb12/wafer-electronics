@@ -61,7 +61,7 @@ function HomePage() {
                         </button>
                     ) : (
                             <button
-                                className="btn btn-danger"
+                                className="btn btn-primary"
                                 onClick={() => Visibility(url.shortUrl)}
                             >
                                 Enable
