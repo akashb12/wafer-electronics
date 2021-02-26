@@ -26,7 +26,6 @@ function HomePage() {
 
 
     // graph
-
     useEffect(() => {
         for (const dataObj of Url) {
             urlNameArray.push(dataObj.shortUrl);
@@ -46,7 +45,7 @@ function HomePage() {
         console.log(urlNameArray, urlClicksArray);
     }, [Url]);
 
-    //   inserting all urls in table
+    //   MAPPING INTO urls in table
     const urls = Url.map((url, index) => {
         return (
             <tr value={url._id} key={url._id}>
@@ -141,13 +140,13 @@ function HomePage() {
           </button>
                 </form>
                 <div>
-                <h2 style={{textAlign:"center",margin:"10px 10px"}}>x-axis: urls, y-axis: clicks</h2>
-                <Bar
-  data={chartData}
-  width={100}
-  height={50}
-  options={{ maintainAspectRatio: false }}
-/>
+                    <h2 style={{ textAlign: "center", margin: "10px 10px" }}>x-axis: urls, y-axis: clicks</h2>
+                    <Bar
+                        data={chartData}
+                        width={100}
+                        height={50}
+                        options={{ maintainAspectRatio: false }}
+                    />
 
                 </div>
                 <Table striped bordered hover variant="dark">
