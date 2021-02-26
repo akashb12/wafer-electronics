@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
+import { Bar } from "react-chartjs-2";
 function HomePage() {
     const [Value, setValue] = useState("");
     const [Url, setUrl] = useState([]);
+    const [chartData, setChartData] = useState({});
+    let urlNameArray = [];
+    let urlClicksArray = [];
     const onValueChange = (event) => {
         setValue(event.currentTarget.value);
     };
@@ -21,11 +24,32 @@ function HomePage() {
         });
     }, []);
 
+
+    // graph
+
+    useEffect(() => {
+        for (const dataObj of Url) {
+            urlNameArray.push(dataObj.shortUrl);
+            urlClicksArray.push(parseInt(dataObj.clicks.length));
+        }
+        setChartData({
+            labels: urlNameArray,
+            datasets: [
+                {
+                    label: "number of clicks",
+                    data: urlClicksArray,
+                    backgroundColor: ["rgba(75, 192, 192, 0.6)"],
+                    borderWidth: 4
+                }
+            ]
+        });
+        console.log(urlNameArray, urlClicksArray);
+    }, [Url]);
+
     //   inserting all urls in table
     const urls = Url.map((url, index) => {
         return (
             <tr value={url._id} key={url._id}>
-                <td>{index + 1}</td>
                 <td>{url.shortUrl}</td>
                 <td>{url.clicks.length}</td>
                 <td>
@@ -116,11 +140,19 @@ function HomePage() {
                         Add
           </button>
                 </form>
+                <div>
+                <h2 style={{textAlign:"center",margin:"10px 10px"}}>x-axis: urls, y-axis: clicks</h2>
+                <Bar
+  data={chartData}
+  width={100}
+  height={50}
+  options={{ maintainAspectRatio: false }}
+/>
 
+                </div>
                 <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
-                            <th>Index</th>
                             <th>Short Url</th>
                             <th>Total Clicks</th>
                             <th>Visibility</th>

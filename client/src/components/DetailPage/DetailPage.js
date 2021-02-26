@@ -33,7 +33,7 @@ function DetailPage(props) {
         });
     }, []);
 
-    // get 24 hours data
+    // get data on time
     useEffect(() => {
         Axios.post("/api/shortenUrl/getUrlsOnDate/" + Id).then((response) => {
             if (response.data.status) {
