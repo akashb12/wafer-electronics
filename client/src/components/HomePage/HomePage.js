@@ -27,22 +27,27 @@ function HomePage() {
 
     // plotting bar graph
     useEffect(() => {
-        for (const dataObj of Url) {
-            urlNameArray.push(dataObj.shortUrl);
-            urlClicksArray.push(parseInt(dataObj.clicks.length));
-        }
-        setChartData({
-            labels: urlNameArray,
-            datasets: [
-                {
-                    label: "number of clicks",
-                    data: urlClicksArray,
-                    backgroundColor: ["rgba(75, 192, 192, 0.6)"],
-                    borderWidth: 4
+        Axios.post("/api/shortenUrl/displayGraphUrls").then((response) => {
+            if (response.data.status) {
+                for (const dataObj of response.data.urls) {
+                    urlNameArray.push(dataObj.shortUrl);
+                    urlClicksArray.push(parseInt(dataObj.clicks.length));
                 }
-            ]
+                setChartData({
+                    labels: urlNameArray,
+                    datasets: [
+                        {
+                            label: "number of clicks",
+                            data: urlClicksArray,
+                            backgroundColor: ["rgba(75, 192, 192, 0.6)"],
+                            borderWidth: 4
+                        }
+                    ]
+                });
+            } else {
+                alert("error");
+            }
         });
-        console.log(urlNameArray, urlClicksArray);
     }, [Url]);
 
     //   MAPPING INTO urls in table

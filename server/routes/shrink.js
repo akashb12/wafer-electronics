@@ -8,6 +8,9 @@ router.post("/createShortUrls", shrinkController.createShortUrls)
 // display urls
 router.post("/displayShortUrls", shrinkController.displayShortUrls)
 
+// display graph urls
+router.post("/displayGraphUrls", shrinkController.displayGraphUrls)
+
 // url by shortid
 router.post("/displayUrlById/:id", shrinkController.displayUrlById)
 

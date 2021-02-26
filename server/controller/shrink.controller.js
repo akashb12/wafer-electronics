@@ -43,6 +43,24 @@ module.exports.displayShortUrls = async function (req, res) {
         })
 }
 
+// DISPLAY URLS FOR GRAPH
+module.exports.displayGraphUrls = async function (req, res) {
+    Shrink.find({enabled:true})
+        .exec(async (err, urls) => {
+            if (err) return res.status(400).send(err);
+            else if (!urls) {
+                res.status(400).send({
+                    status: false
+                })
+            } else {
+                res.status(200).send({
+                    status: true,
+                    urls
+                })
+            }
+        })
+}
+
 //  get url by shortid
 module.exports.displayUrlById = async function (req, res) {
     Shrink.findOne({ shortUrl: req.params.id })
