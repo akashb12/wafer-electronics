@@ -1,7 +1,7 @@
 To use this application,
 1. Type " npm install " inside the root directory ( Download Server Dependencies ).
 2. Type " npm install " inside the client directory ( Download Front-end Dependencies ).
-4. Go to server/config and create mongodb url which is added in email.
+4. Go to server/config and create dev.js file and add mongodb url which is present in email.
 4. After both frontend and backend installation is completed type "npm run dev" in root directory which  will run both server and client.
 
 
