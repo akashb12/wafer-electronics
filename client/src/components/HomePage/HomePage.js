@@ -25,7 +25,7 @@ function HomePage() {
     }, []);
 
 
-    // graph
+    // plotting bar graph
     useEffect(() => {
         for (const dataObj of Url) {
             urlNameArray.push(dataObj.shortUrl);
@@ -78,6 +78,7 @@ function HomePage() {
             </tr>
         );
     });
+
     // enable disable url
     const Visibility = (shortUrl) => {
         console.log(shortUrl);
